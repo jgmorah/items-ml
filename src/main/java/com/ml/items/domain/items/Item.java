@@ -1,9 +1,10 @@
 package com.ml.items.domain.items;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Item {
+public class Item implements Serializable {
     private String itemId;
     private String title;
     private String categoryId;

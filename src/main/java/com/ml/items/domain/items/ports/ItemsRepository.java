@@ -10,5 +10,5 @@ public interface ItemsRepository {
 
     Optional<Item> findExternalItemById(String ItemId);
 
-    Item save(Item item);
+    void save(Item item);
 }
