@@ -6,8 +6,8 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Metric {
     private MetricType type;
@@ -34,7 +34,7 @@ public class Metric {
         this.qty = qty;
     }
 
-    public static HashMap<LocalDateTime, List<Metric>> addMetric(MetricType type, long qty) {
+    public static ConcurrentHashMap<LocalDateTime, List<Metric>> addMetric(MetricType type, long qty) {
         LocalDateTime now = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
         if (ItemsController.httpTracker.containsKey(now)) {
             List<Metric> metrics = ItemsController.httpTracker.get(now);

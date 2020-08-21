@@ -30,14 +30,15 @@ public class ItemsRepositoryImp implements ItemsRepository {
 
     private MELIService serviceMELI;
 
-    @Autowired
+
     private JdbcTemplate jdbcTemplate;
     private Gson gson;
 
-    public ItemsRepositoryImp() {
+    @Autowired
+    public ItemsRepositoryImp(JdbcTemplate jdbcTemplate) {
         this.serviceMELI = new RetrofitClientBuilder().getClient().create(MELIService.class);
-
         this.gson = new Gson();
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
@@ -90,6 +91,4 @@ public class ItemsRepositoryImp implements ItemsRepository {
             logger.error("error saving local item  {}", item.getItemId());
         }
     }
-
-
 }

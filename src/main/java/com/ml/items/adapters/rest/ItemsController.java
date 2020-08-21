@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 
@@ -25,9 +26,12 @@ public class ItemsController {
 
     private static final String ERROR_MSG = "Item not found, id: ";
     /**
-     * This metric doesnt work for multiple instances
+     *
+     * In memory object to persist metric information only while the app is running
+     *
+     * Thread safe
      */
-    public static HashMap<LocalDateTime, List<Metric>> httpTracker = new HashMap<>();
+    public static ConcurrentHashMap<LocalDateTime, List<Metric>> httpTracker = new ConcurrentHashMap<>();
 
     /**
      * Prometheus counter in order to track some specific steps of our application - example http requests quantity metrics
