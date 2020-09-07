@@ -46,7 +46,7 @@ sin embargo no es la mejor forma de hacerlo (ver sugerencias)
 de la aplicación.
 
 ## Sugerencias
-
+- Hacer el llamado a las diferentes APIs externas de manera paralela (con mas de un thread) para evitar tener bloqueado el thread mientras una de las apis responde, ya que dichos llamados no son dependientes entre si
 - Usar cache en vez de Bd: para el proposito indicado no es necesario contar con una bd relacional, menos aún cuando 
 no se necesita persistir la data normalizada, sugerencia usar redis (o un noSql)
 - Se implementó un POC de Metrics con Prometheus con un contador custom, para luego ser 
